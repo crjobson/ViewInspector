@@ -106,7 +106,7 @@ private extension ViewHosting {
     struct Hosted {
         #if os(macOS)
         let viewController: NSViewController
-        #elseif os(iOS) || os(tvOS)
+        #elseif os(iOS) || os(tvOS) || os(visionOS)
         let viewController: UIViewController
         #endif
         let medium: Content.Medium
