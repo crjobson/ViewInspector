@@ -79,7 +79,7 @@ public extension InspectableView {
     #endif
 }
 
-#if os(tvOS) || os(macOS) || os(visionOS)
+#if os(tvOS) || os(macOS)
 internal extension MoveCommandDirection {
     var selector: String {
         switch self {
@@ -93,7 +93,7 @@ internal extension MoveCommandDirection {
 }
 #endif
 
-#if os(tvOS) || os(macOS) || os(visionOS)
+#if os(tvOS) || os(macOS)
 internal extension InspectableView {
     func onCommandModifier<Type>(_ selector: String, path: String = "modifier|action|action",
                                  type: Type.Type, call: String) throws -> Type {
