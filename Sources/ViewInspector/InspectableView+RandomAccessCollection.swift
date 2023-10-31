@@ -1,7 +1,7 @@
 import Foundation
 import SwiftUI
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 extension InspectableView: Sequence where View: MultipleViewContent {
     
     public typealias Element = InspectableView<ViewType.ClassifiedView>
@@ -38,7 +38,7 @@ extension InspectableView: Sequence where View: MultipleViewContent {
     }
 }
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 extension InspectableView: Collection, BidirectionalCollection, RandomAccessCollection
     where View: MultipleViewContent {
     
@@ -62,7 +62,7 @@ extension InspectableView: Collection, BidirectionalCollection, RandomAccessColl
     public func index(after index: Index) -> Index { index + 1 }
 }
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 extension Content {
     
     static var absentView: Content {

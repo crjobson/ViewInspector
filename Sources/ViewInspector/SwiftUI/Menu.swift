@@ -89,7 +89,7 @@ public extension InspectableView {
 
 // MARK: - MenuStyle inspection
 
-#if os(iOS) || os(macOS)
+#if os(iOS) || os(macOS) || os(visionOS)
 @available(iOS 14.0, macOS 11.0, *)
 @available(tvOS, unavailable)
 @available(watchOS, unavailable)

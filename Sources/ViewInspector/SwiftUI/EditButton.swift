@@ -8,7 +8,7 @@ public extension ViewType {
     }
 }
 
-#if os(iOS)
+#if os(iOS) || os(visionOS)
 
 // MARK: - Extraction from SingleViewContent parent
 

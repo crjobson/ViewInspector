@@ -2,7 +2,7 @@ import SwiftUI
 import Combine
 import XCTest
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 public protocol InspectionEmissary: AnyObject {
     
     associatedtype V
@@ -12,7 +12,7 @@ public protocol InspectionEmissary: AnyObject {
 
 // MARK: - InspectionEmissary for View
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 public extension InspectionEmissary where V: View {
     
     typealias ViewInspection = (InspectableView<ViewType.View<V>>) throws -> Void
@@ -45,7 +45,7 @@ public extension InspectionEmissary where V: View {
 
 // MARK: - InspectionEmissary for ViewModifier
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 public extension InspectionEmissary where V: ViewModifier {
     
     typealias ViewModifierInspection = (InspectableView<ViewType.ViewModifier<V>>) throws -> Void
@@ -74,7 +74,7 @@ public extension InspectionEmissary where V: ViewModifier {
 
 // MARK: - Private
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 private extension InspectionEmissary {
     
     typealias SubjectInspection = (_ subject: V) throws -> Void
@@ -128,7 +128,7 @@ private extension InspectionEmissary {
 
 // MARK: - on keyPath inspection
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 public extension View {
     @discardableResult
     mutating func on(_ keyPath: WritableKeyPath<Self, ((Self) -> Void)?>,
@@ -142,7 +142,7 @@ public extension View {
     }
 }
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 public extension ViewModifier {
     @discardableResult
     mutating func on(_ keyPath: WritableKeyPath<Self, ((Self) -> Void)?>,
@@ -156,7 +156,7 @@ public extension ViewModifier {
     }
 }
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 private extension Inspector {
     static func injectInspectionCallback<T>(
         value: inout T, keyPath: WritableKeyPath<T, ((T) -> Void)?>,

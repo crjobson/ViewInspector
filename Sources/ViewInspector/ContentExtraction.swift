@@ -1,6 +1,6 @@
 import SwiftUI
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 internal struct ContentExtractor {
 
     internal init(source: Any) throws {
@@ -56,7 +56,7 @@ internal struct ContentExtractor {
                 the contents of NSViewControllerRepresentable
                 """)
         #endif
-        #if os(iOS) || os(tvOS)
+        #if os(iOS) || os(tvOS) || os(visionOS)
         case is any UIViewRepresentable:
             throw InspectionError.notSupported(
                 """
@@ -100,7 +100,7 @@ internal struct ContentExtractor {
     private let contentSource: ContentSource
 }
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 private extension ViewModifier {
     var hasBody: Bool {
         if self is (any EnvironmentalModifier) {
@@ -110,7 +110,7 @@ private extension ViewModifier {
     }
 }
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 public extension View {
     
     func extractContent(environmentObjects: [AnyObject]) throws -> Any {
@@ -126,7 +126,7 @@ public extension View {
     }
 }
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 public extension ViewModifier {
     
     func extractContent(environmentObjects: [AnyObject]) throws -> Any {
@@ -146,7 +146,7 @@ public extension ViewModifier {
     }
 }
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 public extension Gesture {
     func extractContent(environmentObjects: [AnyObject]) throws -> Any { () }
 }

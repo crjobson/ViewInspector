@@ -2,7 +2,7 @@ import SwiftUI
 
 // MARK: - Alert
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 public extension ViewType {
     
     struct Alert: KnownViewType {
@@ -19,7 +19,7 @@ public extension ViewType {
 
 // MARK: - Extraction
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 public extension InspectableView {
 
     func alert(_ index: Int? = nil) throws -> InspectableView<ViewType.Alert> {
@@ -27,7 +27,7 @@ public extension InspectableView {
     }
 }
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 internal extension Content {
     
     func alert(parent: UnwrappedView, index: Int?) throws -> InspectableView<ViewType.Alert> {
@@ -105,7 +105,7 @@ internal extension Content {
 
 // MARK: - Custom Attributes
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 public extension InspectableView where View == ViewType.Alert {
 
     func title() throws -> InspectableView<ViewType.Text> {
@@ -155,7 +155,7 @@ public extension InspectableView where View == ViewType.Alert {
 
 // MARK: - Non Standard Children
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 extension ViewType.Alert: SupplementaryChildren {
     static func supplementaryChildren(_ parent: UnwrappedView) throws -> LazyGroup<SupplementaryView> {
         let iOS15Modifier = parent.content.isIOS15Modifier
@@ -208,7 +208,7 @@ extension ViewType.Alert: SupplementaryChildren {
 
 // MARK: - AlertButton
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 public extension ViewType {
     
     struct AlertButton: KnownViewType {
@@ -216,14 +216,14 @@ public extension ViewType {
     }
 }
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 extension SwiftUI.Alert.Button: CustomViewIdentityMapping {
     var viewTypeForSearch: KnownViewType.Type { ViewType.AlertButton.self }
 }
 
 // MARK: - Non Standard Children
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 extension ViewType.AlertButton: SupplementaryChildren {
     static func supplementaryChildren(_ parent: UnwrappedView) throws -> LazyGroup<SupplementaryView> {
         return .init(count: 1) { _ in
@@ -237,14 +237,14 @@ extension ViewType.AlertButton: SupplementaryChildren {
 
 // MARK: - Custom Attributes
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 public extension Alert.Button {
     enum Style: String {
         case `default`, cancel, destructive
     }
 }
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 public extension InspectableView where View == ViewType.AlertButton {
     
     func labelView() throws -> InspectableView<ViewType.Text> {

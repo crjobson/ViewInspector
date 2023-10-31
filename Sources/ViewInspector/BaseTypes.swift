@@ -2,34 +2,34 @@ import SwiftUI
 
 // MARK: - Protocols
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 @available(*, deprecated, message: "Conformance to Inspectable is no longer required")
 public protocol Inspectable { }
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 public protocol SingleViewContent {
     static func child(_ content: Content) throws -> Content
 }
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 public protocol MultipleViewContent {
     static func children(_ content: Content) throws -> LazyGroup<Content>
 }
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 internal typealias SupplementaryView = UnwrappedView
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 internal protocol SupplementaryChildren {
     static func supplementaryChildren(_ parent: UnwrappedView) throws -> LazyGroup<SupplementaryView>
 }
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 internal protocol SupplementaryChildrenLabelView: SupplementaryChildren {
     static var labelViewPath: String { get }
 }
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 extension SupplementaryChildrenLabelView {
     static var labelViewPath: String { "label" }
     static func supplementaryChildren(_ parent: UnwrappedView) throws -> LazyGroup<SupplementaryView> {
@@ -42,7 +42,7 @@ extension SupplementaryChildrenLabelView {
     }
 }
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 public protocol BaseViewType {
     static var typePrefix: String { get }
     static var namespacedPrefixes: [String] { get }
@@ -50,7 +50,7 @@ public protocol BaseViewType {
     static func inspectionCall(typeName: String) -> String
 }
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 public extension BaseViewType {
     static var namespacedPrefixes: [String] {
         guard !typePrefix.isEmpty else { return [] }
@@ -98,10 +98,10 @@ internal extension Array where Element == String {
     }
 }
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 public struct ViewType { }
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 internal extension ViewType {
     static let indexPlaceholder = "###"
     static let commaPlaceholder = "~~~"
@@ -121,7 +121,7 @@ internal extension ViewType {
 
 // MARK: - Content
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 public struct Content {
     let view: Any
     let medium: Medium
@@ -132,7 +132,7 @@ public struct Content {
     }
 }
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 internal extension Content {
     struct Medium {
         let viewModifiers: [Any]
@@ -198,7 +198,7 @@ internal extension Content {
 
 // MARK: - Binding helper
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 public extension Binding {
     init(wrappedValue: Value) {
         var value = wrappedValue
@@ -208,7 +208,7 @@ public extension Binding {
 
 // MARK: - Error
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 public enum InspectionError: Swift.Error {
     case inspection(path: String, factual: String, expected: String)
     case typeMismatch(factual: String, expected: String)
@@ -225,7 +225,7 @@ public enum InspectionError: Swift.Error {
     case unresponsiveControl(name: String, reason: String)
 }
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 extension InspectionError: CustomStringConvertible, LocalizedError {
     
     public var description: String {
@@ -269,27 +269,27 @@ extension InspectionError: CustomStringConvertible, LocalizedError {
 
 // MARK: - ViewProvider
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 internal protocol SingleViewProvider {
     func view() throws -> Any
 }
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 internal protocol MultipleViewProvider {
     func views() throws -> LazyGroup<Any>
 }
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 internal protocol ElementViewProvider {
     func view(_ element: Any) throws -> Any
 }
 
 // MARK: - BinaryEquatable
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 public protocol BinaryEquatable: Equatable { }
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 extension BinaryEquatable {
     public static func == (lhs: Self, rhs: Self) -> Bool {
         withUnsafeBytes(of: lhs) { lhsBytes -> Bool in

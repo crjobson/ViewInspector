@@ -1,6 +1,6 @@
 import SwiftUI
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 public extension ViewType {
     
     struct Button: KnownViewType {
@@ -10,7 +10,7 @@ public extension ViewType {
 
 // MARK: - Extraction from SingleViewContent parent
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 public extension InspectableView where View: SingleViewContent {
     
     func button() throws -> InspectableView<ViewType.Button> {
@@ -20,7 +20,7 @@ public extension InspectableView where View: SingleViewContent {
 
 // MARK: - Extraction from MultipleViewContent parent
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 public extension InspectableView where View: MultipleViewContent {
     
     func button(_ index: Int) throws -> InspectableView<ViewType.Button> {
@@ -30,7 +30,7 @@ public extension InspectableView where View: MultipleViewContent {
 
 // MARK: - Non Standard Children
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 extension ViewType.Button: SupplementaryChildrenLabelView {
     static var labelViewPath: String {
         if #available(iOS 15.0, macOS 12.0, tvOS 15.0, watchOS 8.0, *) {
@@ -43,7 +43,7 @@ extension ViewType.Button: SupplementaryChildrenLabelView {
 
 // MARK: - Custom Attributes
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 public extension InspectableView where View == ViewType.Button {
     
     func labelView() throws -> InspectableView<ViewType.ClassifiedView> {
@@ -74,7 +74,7 @@ public extension InspectableView where View == ViewType.Button {
 
 // MARK: - Global View Modifiers
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 public extension InspectableView {
 
     func buttonStyle() throws -> Any {
@@ -94,7 +94,7 @@ public extension InspectableView {
 
 // MARK: - ButtonStyle and PrimitiveButtonStyle inspection
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 public extension ButtonStyle {
     func inspect(isPressed: Bool) throws -> InspectableView<ViewType.ClassifiedView> {
         let config = ButtonStyleConfiguration(isPressed: isPressed)
@@ -103,7 +103,7 @@ public extension ButtonStyle {
     }
 }
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 public extension PrimitiveButtonStyle {
     func inspect(onTrigger: @escaping () -> Void = { }) throws -> InspectableView<ViewType.ClassifiedView> {
         let config = PrimitiveButtonStyleConfiguration(onTrigger: onTrigger)
@@ -113,7 +113,7 @@ public extension PrimitiveButtonStyle {
 
 // MARK: - Style Configuration initializers
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 internal extension ButtonStyleConfiguration {
     private struct Allocator3 {
         let data: (Bool, Bool, Bool)
@@ -139,7 +139,7 @@ internal extension ButtonStyleConfiguration {
     }
 }
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 public extension PrimitiveButtonStyleConfiguration {
     private struct Allocator16 {
         let onTrigger: () -> Void

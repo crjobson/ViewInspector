@@ -1,9 +1,9 @@
 import SwiftUI
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 public struct Inspector { }
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 internal extension Inspector {
     
     static func attribute(label: String, value: Any) throws -> Any {
@@ -157,7 +157,7 @@ private extension String {
 
 // MARK: - Attributes lookup
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 public extension Inspector {
     
     /**
@@ -235,7 +235,7 @@ public extension Inspector {
     }
 }
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 fileprivate extension Dictionary where Key == String {
     func description(level: Int) -> String {
         let indent = Inspector.indent(level: level)
@@ -245,7 +245,7 @@ fileprivate extension Dictionary where Key == String {
     }
 }
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 fileprivate extension Array {
     func description(level: Int) -> String {
         guard count > 0 else {
@@ -259,7 +259,7 @@ fileprivate extension Array {
 }
 // MARK: - View Inspection
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 internal extension Inspector {
     
     static func viewsInContainer(view: Any, medium: Content.Medium) throws -> LazyGroup<Content> {
@@ -338,7 +338,7 @@ internal extension Inspector {
     }
 }
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 extension InspectionError {
     static func typeMismatch<V, T>(_ value: V, _ expectedType: T.Type) -> InspectionError {
         var factual = Inspector.typeName(value: value)

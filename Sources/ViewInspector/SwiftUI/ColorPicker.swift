@@ -1,6 +1,6 @@
 import SwiftUI
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 public extension ViewType {
     
     struct ColorPicker: KnownViewType {
@@ -10,7 +10,7 @@ public extension ViewType {
 
 // MARK: - Extraction from SingleViewContent parent
 
-@available(iOS 14.0, macOS 11.0, *)
+@available(iOS 14.0, visionOS 1.0, macOS 11.0, *)
 @available(tvOS, unavailable)
 public extension InspectableView where View: SingleViewContent {
     
@@ -21,7 +21,7 @@ public extension InspectableView where View: SingleViewContent {
 
 // MARK: - Extraction from MultipleViewContent parent
 
-@available(iOS 14.0, macOS 11.0, *)
+@available(iOS 14.0, visionOS 1.0, macOS 11.0, *)
 @available(tvOS, unavailable)
 public extension InspectableView where View: MultipleViewContent {
     
@@ -32,12 +32,12 @@ public extension InspectableView where View: MultipleViewContent {
 
 // MARK: - Non Standard Children
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 extension ViewType.ColorPicker: SupplementaryChildrenLabelView { }
 
 // MARK: - Custom Attributes
 
-@available(iOS 14.0, tvOS 14.0, macOS 11.0, *)
+@available(iOS 14.0, visionOS 1.0, tvOS 14.0, macOS 11.0, *)
 public extension InspectableView where View == ViewType.ColorPicker {
     
     func labelView() throws -> InspectableView<ViewType.ClassifiedView> {
@@ -79,7 +79,7 @@ public extension InspectableView where View == ViewType.ColorPicker {
     #endif
 }
 
-@available(iOS 14.0, tvOS 14.0, macOS 11.0, *)
+@available(iOS 14.0, visionOS 1.0, tvOS 14.0, macOS 11.0, *)
 public extension ViewType.ColorPicker {
     /**
      A container for comparing colors in tests. FYI: Color.red != UIColor.red

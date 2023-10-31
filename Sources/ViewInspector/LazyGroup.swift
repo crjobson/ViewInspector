@@ -1,4 +1,4 @@
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 public struct LazyGroup<T> {
     
     private let access: (Int) throws -> T

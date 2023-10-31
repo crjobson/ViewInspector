@@ -2,7 +2,7 @@ import SwiftUI
 
 // MARK: - Index
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 internal extension ViewSearch {
     
     private static var index: [String: [ViewIdentity]] = {
@@ -162,19 +162,19 @@ internal extension ViewSearch {
 
 // MARK: - ViewType.Stub
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 internal extension ViewType {
     struct Stub { }
 }
 
 // MARK: - ViewIdentity
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 internal protocol CustomViewIdentityMapping {
     var viewTypeForSearch: KnownViewType.Type { get }
 }
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 internal extension ViewSearch {
     
     struct ViewIdentity {
@@ -224,7 +224,7 @@ internal extension ViewSearch {
     }
 }
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 private extension KnownViewType {
     static func viewSearchIdentity(genericTypeName: String? = nil) -> ViewSearch.ViewIdentity {
         return ViewSearch.ViewIdentity(
@@ -237,14 +237,14 @@ private extension KnownViewType {
 
 // MARK: - KnownViewType and extensions
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 internal protocol KnownViewType: BaseViewType {
     static func childViewsBuilder() -> ViewSearch.ViewIdentity.ChildrenBuilder
     static func supplementaryViewsBuilder() -> ViewSearch.ViewIdentity.SupplementaryBuilder
     static var genericViewTypeForViewSearch: String? { get }
 }
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 extension KnownViewType {
     static func childViewsBuilder() -> ViewSearch.ViewIdentity.ChildrenBuilder {
         return { _ in .empty }
@@ -255,7 +255,7 @@ extension KnownViewType {
     static var genericViewTypeForViewSearch: String? { nil }
 }
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 extension KnownViewType where Self: SingleViewContent {
     static func childViewsBuilder() -> ViewSearch.ViewIdentity.ChildrenBuilder {
         return { parent in
@@ -264,7 +264,7 @@ extension KnownViewType where Self: SingleViewContent {
     }
 }
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 extension KnownViewType where Self: MultipleViewContent {
     static func childViewsBuilder() -> ViewSearch.ViewIdentity.ChildrenBuilder {
         return { parent in
@@ -273,7 +273,7 @@ extension KnownViewType where Self: MultipleViewContent {
     }
 }
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 extension KnownViewType where Self: SingleViewContent & MultipleViewContent {
     static func childViewsBuilder() -> ViewSearch.ViewIdentity.ChildrenBuilder {
         return { parent in
@@ -282,7 +282,7 @@ extension KnownViewType where Self: SingleViewContent & MultipleViewContent {
     }
 }
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 extension KnownViewType where Self: SupplementaryChildren {
     static func supplementaryViewsBuilder() -> ViewSearch.ViewIdentity.SupplementaryBuilder {
         return { parent in
@@ -293,7 +293,7 @@ extension KnownViewType where Self: SupplementaryChildren {
 
 // MARK: - Descendants
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 private extension LazyGroup where T == Content {
     func descendants(_ parent: UnwrappedView, indexed: Bool) -> LazyGroup<UnwrappedView> {
         return .init(count: count, { index in
@@ -303,7 +303,7 @@ private extension LazyGroup where T == Content {
     }
 }
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 private extension Content {
     func descendants(_ parent: UnwrappedView) -> LazyGroup<UnwrappedView> {
         return .init(count: 1) { _ in
@@ -314,7 +314,7 @@ private extension Content {
 
 // MARK: - ModifierIdentity
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 internal extension ViewType.Overlay.API {
     
     static var viewSearchModifierIdentities: [ViewSearch.ModifierIdentity] {
@@ -331,7 +331,7 @@ internal extension ViewType.Overlay.API {
     }
 }
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 internal extension ViewSearch {
     
     static private(set) var modifierIdentities: [ModifierIdentity] = ViewType.Overlay.API.viewSearchModifierIdentities
@@ -388,7 +388,7 @@ internal extension ViewSearch {
     }
 }
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 internal extension Content {
     
     func modifierDescendants(parent: UnwrappedView) -> LazyGroup<UnwrappedView> {
@@ -429,7 +429,7 @@ internal extension Content {
         #else
         let actionSheetModifiers = actionSheetsForSearch()
         #endif
-        #if os(iOS) || os(macOS)
+        #if os(iOS) || os(macOS) || os(visionOS)
         let popoverModifiers = popoversForSearch()
         #else
         let popoverModifiers: [ViewSearch.ModifierIdentity] = []

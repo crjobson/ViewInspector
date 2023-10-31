@@ -2,7 +2,7 @@ import SwiftUI
 
 // MARK: - EnvironmentObject injection
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 
 internal enum EnvironmentInjection {
     static func missingEnvironmentObjects(for entity: Any) -> [String] {
@@ -60,7 +60,7 @@ internal enum EnvironmentInjection {
     }
 }
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 internal struct EnvObject {
     static var seedOffset: Int { 8 }
     static var structSize: Int { 16 }

@@ -89,7 +89,7 @@ final class GroupBoxTests: XCTestCase {
         XCTAssertEqual(sut, "abc")
     }
     
-    #if os(iOS) || os(macOS)
+    #if os(iOS) || os(macOS) || os(visionOS)
     func testGroupBoxStyleInspection() throws {
         guard #available(iOS 14, macOS 11.0, *) else { throw XCTSkip() }
         let sut = EmptyView().groupBoxStyle(DefaultGroupBoxStyle())
@@ -110,7 +110,7 @@ final class GroupBoxTests: XCTestCase {
     #endif
 }
 
-#if os(iOS) || os(macOS)
+#if os(iOS) || os(macOS) || os(visionOS)
 @available(iOS 14.0, macOS 11.0, *)
 @available(tvOS, unavailable)
 @available(watchOS, unavailable)

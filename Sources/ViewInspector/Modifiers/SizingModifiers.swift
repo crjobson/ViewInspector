@@ -2,7 +2,7 @@ import SwiftUI
 
 // MARK: - ViewSizing
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 public extension InspectableView {
 
     func fixedFrame() throws -> (width: CGFloat, height: CGFloat, alignment: Alignment) {
@@ -72,7 +72,7 @@ public extension InspectableView {
 
 // MARK: - ViewPadding
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 public extension InspectableView {
 
     func padding() throws -> EdgeInsets {
@@ -148,7 +148,7 @@ public extension InspectableView {
     }
 }
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 private extension Inspector {
     struct PaddingAttributes {
         let edgeInsets: EdgeInsets?
@@ -156,7 +156,7 @@ private extension Inspector {
     }
 }
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 private extension Edge.Set {
     var individualEdges: [Edge] {
         return [Edge.top, .bottom, .leading, .trailing]
@@ -164,7 +164,7 @@ private extension Edge.Set {
     }
 }
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 private extension Edge {
     var edgeSet: Edge.Set {
         switch self {
@@ -176,7 +176,7 @@ private extension Edge {
     }
 }
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 private extension RandomAccessCollection where Element == Inspector.PaddingAttributes {
     func cumulativeValue(edge: Edge.Set) throws -> CGFloat? {
         let undefinedInsetError: (Edge) -> Error = { edge in

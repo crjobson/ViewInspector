@@ -2,7 +2,7 @@ import SwiftUI
 
 // MARK: - Accessibility
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 public extension InspectableView {
     
     func accessibilityLabel() throws -> InspectableView<ViewType.Text> {
@@ -204,7 +204,7 @@ public extension InspectableView {
 
 // MARK: - Private
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 private extension AccessibilityActionKind {
     func name() throws -> InspectableView<ViewType.Text> {
         let view: Any = try {
@@ -225,7 +225,7 @@ private extension AccessibilityActionKind {
     }
 }
 
-@available(iOS 15.0, macOS 12.0, tvOS 15.0, watchOS 8.0, *)
+@available(iOS 15.0, visionOS 1.0, macOS 12.0, tvOS 15.0, watchOS 8.0, *)
 private struct AccessibilityProperty {
     
     let keyPointerValue: UInt64
@@ -257,7 +257,7 @@ private struct AccessibilityProperty {
     }()
 }
 
-@available(iOS 15.0, macOS 12.0, tvOS 15.0, watchOS 8.0, *)
+@available(iOS 15.0, visionOS 1.0, macOS 12.0, tvOS 15.0, watchOS 8.0, *)
 private extension InspectableView {
     func v3AccessibilityElement<V, T>(
         path: String? = nil, type: T.Type, call: String, _ reference: (EmptyView) -> V
@@ -350,12 +350,12 @@ private extension InspectableView {
     }
 }
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 protocol AccessibilityKeyValues {
     func accessibilityKeyValues() throws -> [(key: UInt64, value: Any)]
 }
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 extension Dictionary: AccessibilityKeyValues {
     func accessibilityKeyValues() throws -> [(key: UInt64, value: Any)] {
         return try self.keys.compactMap { key -> (key: UInt64, value: Any)? in
@@ -371,7 +371,7 @@ extension Dictionary: AccessibilityKeyValues {
     }
 }
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 private extension InspectableView {
     
     func v2AccessibilityElement<T>(_ name: String, path: String = "value|some",

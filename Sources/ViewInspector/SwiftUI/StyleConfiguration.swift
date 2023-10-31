@@ -18,7 +18,7 @@ public extension ViewType.StyleConfiguration {
             ]
             if #available(iOS 14.0, macOS 11.0, tvOS 14.0, watchOS 7.0, *) {
                 types.append(ProgressViewStyleConfiguration.Label.self)
-                #if os(iOS) || os(macOS)
+                #if os(iOS) || os(macOS) || os(visionOS)
                 types.append(GroupBoxStyleConfiguration.Label.self)
                 types.append(MenuStyleConfiguration.Label.self)
                 #endif
@@ -38,7 +38,7 @@ public extension ViewType.StyleConfiguration {
         public static var namespacedPrefixes: [String] {
             var types: [Any.Type] = []
             if #available(iOS 14.0, macOS 11.0, tvOS 14.0, *) {
-                #if os(iOS) || os(macOS)
+                #if os(iOS) || os(macOS) || os(visionOS)
                 types.append(GroupBoxStyleConfiguration.Content.self)
                 types.append(MenuStyleConfiguration.Content.self)
                 #endif

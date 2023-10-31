@@ -6,10 +6,10 @@ struct ToolbarPlacement {
 }
 #endif
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 public extension InspectableView {
     
-    @available(iOS 13.0, tvOS 13.0, *)
+    @available(iOS 13.0, visionOS 1.0, tvOS 13.0, *)
     @available(macOS, unavailable)
     func navigationBarHidden() throws -> Bool {
         if #available(iOS 16.0, macOS 13.0, tvOS 16.0, watchOS 9.0, *) {
@@ -31,7 +31,7 @@ public extension InspectableView {
         return try Inspector.cast(value: value, type: Bool.self)
     }
     
-    @available(iOS 13.0, tvOS 13.0, *)
+    @available(iOS 13.0, visionOS 1.0, tvOS 13.0, *)
     @available(macOS, unavailable)
     func navigationBarBackButtonHidden() throws -> Bool {
         return try modifierAttribute(
@@ -39,7 +39,7 @@ public extension InspectableView {
             path: "modifier|value", type: Bool.self, call: "navigationBarBackButtonHidden")
     }
     
-    @available(iOS 13.0, *)
+    @available(iOS 13.0, visionOS 1.0, *)
     @available(macOS, unavailable)
     @available(tvOS, unavailable)
     @available(watchOS, unavailable)
@@ -50,17 +50,17 @@ public extension InspectableView {
     }
 }
 
-@available(iOS 16.0, macOS 13.0, tvOS 16.0, watchOS 9.0, *)
+@available(iOS 16.0, visionOS 1.0, macOS 13.0, tvOS 16.0, watchOS 9.0, *)
 extension ToolbarPlacement: BinaryEquatable { }
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 internal extension ViewType {
     struct EnvironmentReaderView { }
 }
 
 // MARK: - Content Extraction
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 extension ViewType.EnvironmentReaderView: SingleViewContent {
     
     static func child(_ content: Content) throws -> Content {
@@ -70,7 +70,7 @@ extension ViewType.EnvironmentReaderView: SingleViewContent {
 
 // MARK: - Extraction from SingleViewContent parent
 
-@available(iOS 13.0, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, tvOS 13.0, *)
 @available(macOS, unavailable)
 @available(watchOS, unavailable)
 public extension InspectableView where View: SingleViewContent {
@@ -87,7 +87,7 @@ public extension InspectableView where View: SingleViewContent {
 
 // MARK: - Extraction from MultipleViewContent parent
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 public extension InspectableView where View: MultipleViewContent {
     
     func navigationBarItems(_ index: Int = 0) throws -> InspectableView<ViewType.ClassifiedView> {
@@ -102,7 +102,7 @@ public extension InspectableView where View: MultipleViewContent {
 
 // MARK: - Unwrapping the EnvironmentReaderView
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 internal extension InspectableView {
     
     func navigationBarItems<V>(viewType: V.Type, content: Content) throws ->

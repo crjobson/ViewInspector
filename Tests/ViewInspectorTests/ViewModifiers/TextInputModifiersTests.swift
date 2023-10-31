@@ -7,14 +7,14 @@ import SwiftUI
 @available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
 final class TextInputModifiersTests: XCTestCase {
     
-    #if os(iOS) || os(tvOS) || os(watchOS)
+    #if os(iOS) || os(tvOS) || os(watchOS) || os(visionOS)
     func testTextContentType() throws {
         let sut = EmptyView().textContentType(.emailAddress)
         XCTAssertNoThrow(try sut.inspect().emptyView())
     }
     #endif
     
-    #if (os(iOS) || os(tvOS)) && !targetEnvironment(macCatalyst)
+    #if (os(iOS) || os(tvOS) || os(visionOS)) && !targetEnvironment(macCatalyst)
     func testTextContentTypeInspection() throws {
         let sut = AnyView(EmptyView()).textContentType(.emailAddress)
         XCTAssertEqual(try sut.inspect().anyView().textContentType(), .emailAddress)
@@ -22,7 +22,7 @@ final class TextInputModifiersTests: XCTestCase {
     }
     #endif
     
-    #if (os(iOS) || os(tvOS)) && !targetEnvironment(macCatalyst)
+    #if (os(iOS) || os(tvOS) || os(visionOS)) && !targetEnvironment(macCatalyst)
     func testKeyboardType() throws {
         let sut = EmptyView().keyboardType(.namePhonePad)
         XCTAssertNoThrow(try sut.inspect().emptyView())

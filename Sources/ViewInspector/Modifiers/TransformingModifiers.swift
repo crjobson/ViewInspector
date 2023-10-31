@@ -2,7 +2,7 @@ import SwiftUI
 
 // MARK: - ViewTransforming
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 public extension InspectableView {
     
     func rotation() throws -> (angle: Angle, anchor: UnitPoint) {
@@ -59,7 +59,7 @@ public extension InspectableView {
 
 // MARK: - ViewScaling
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 public extension InspectableView {
     
     func isScaledToFill() throws -> Bool {

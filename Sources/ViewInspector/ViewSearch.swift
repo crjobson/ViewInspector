@@ -2,7 +2,7 @@ import SwiftUI
 
 // MARK: - Search namespace and types
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 public struct ViewSearch {
     public enum Relation {
         case child
@@ -17,7 +17,7 @@ public struct ViewSearch {
 
 // MARK: - Public search API
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 public extension InspectableView {
     
     /**
@@ -75,7 +75,7 @@ public extension InspectableView {
       - Throws: An error if the view cannot be found
       - Returns: A found `Link` view
      */
-    @available(iOS 14.0, macOS 11.0, tvOS 14.0, *)
+    @available(iOS 14.0, visionOS 1.0, macOS 11.0, tvOS 14.0, *)
     func find(link url: URL) throws -> InspectableView<ViewType.Link> {
         return try find(ViewType.Link.self, where: { view in
             try view.url() == url
@@ -91,7 +91,7 @@ public extension InspectableView {
       - Throws: An error if the view cannot be found
       - Returns: A found `Link` view
      */
-    @available(iOS 14.0, macOS 11.0, tvOS 14.0, *)
+    @available(iOS 14.0, visionOS 1.0, macOS 11.0, tvOS 14.0, *)
     func find(link label: String,
               locale: Locale = .testsDefault
     ) throws -> InspectableView<ViewType.Link> {
@@ -142,7 +142,7 @@ public extension InspectableView {
      - Throws: An error if the view cannot be found
      - Returns: A found view
      */
-    @available(iOS 14.0, macOS 11.0, tvOS 14.0, watchOS 7.0, *)
+    @available(iOS 14.0, visionOS 1.0, macOS 11.0, tvOS 14.0, watchOS 7.0, *)
     func find(
         viewWithAccessibilityLabel accessibilityLabel: String
     ) throws -> InspectableView<ViewType.ClassifiedView> {
@@ -156,7 +156,7 @@ public extension InspectableView {
      - Throws: An error if the view cannot be found
      - Returns: A found view
      */
-    @available(iOS 14.0, macOS 11.0, tvOS 14.0, watchOS 7.0, *)
+    @available(iOS 14.0, visionOS 1.0, macOS 11.0, tvOS 14.0, watchOS 7.0, *)
     func find(
         viewWithAccessibilityIdentifier accessibilityIdentifier: String
     ) throws -> InspectableView<ViewType.ClassifiedView> {
@@ -336,7 +336,7 @@ public extension InspectableView {
 
 // MARK: - Search
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 private extension UnwrappedView {
     
     func findParent(condition: ViewSearch.Condition, skipFound: Int
@@ -488,7 +488,7 @@ private extension UnwrappedView {
     }
 }
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 private extension UnwrappedView {
     func recursionAbsenceCheck() -> Bool {
         guard content.isCustomView else { return true }
@@ -501,7 +501,7 @@ private extension UnwrappedView {
     }
 }
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 private extension ViewSearch.Traversal {
     func search(in view: UnwrappedView,
                 condition: ViewSearch.Condition,

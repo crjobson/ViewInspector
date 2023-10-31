@@ -4,10 +4,10 @@ import Combine
 import UIKit
 #endif
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
 public struct ViewHosting { }
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
 public extension ViewHosting {
     
     struct ViewId: Hashable {
@@ -100,7 +100,7 @@ public extension ViewHosting {
 
 // MARK: - Private
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 private extension ViewHosting {
     
     struct Hosted {
@@ -114,7 +114,7 @@ private extension ViewHosting {
     private static var hosted: [ViewId: Hosted] = [:]
     #if os(macOS)
     static var window: NSWindow = makeWindow()
-    #elseif os(iOS) || os(tvOS)
+    #elseif os(iOS) || os(tvOS) || os(visionOS)
     static var window: UIWindow = makeWindow()
     #endif
     
@@ -132,7 +132,7 @@ private extension ViewHosting {
         window.layoutIfNeeded()
         return window
     }
-    #elseif os(iOS) || os(tvOS)
+    #elseif os(iOS) || os(tvOS) || os(visionOS)
     static func makeWindow() -> UIWindow {
         let window = UIWindow(frame: UIScreen.main.bounds)
         window.rootViewController = UIViewController()
@@ -152,7 +152,7 @@ private extension ViewHosting {
     static func hostVC<V>(_ view: V) -> NSHostingController<V> where V: View {
         NSHostingController(rootView: view)
     }
-    #elseif os(iOS) || os(tvOS)
+    #elseif os(iOS) || os(tvOS) || os(visionOS)
     static var rootViewController: UIViewController {
         window.rootViewController!
     }
@@ -168,7 +168,7 @@ private extension ViewHosting {
     }
     static func didMove(_ child: NSViewController, to parent: NSViewController?) {
     }
-    #elseif os(iOS) || os(tvOS)
+    #elseif os(iOS) || os(tvOS) || os(visionOS)
     static func willMove(_ child: UIViewController, to parent: UIViewController?) {
         child.willMove(toParent: parent)
     }
@@ -227,7 +227,7 @@ private class RootViewController: NSViewController {
 
 // MARK: - UIView lookup
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 7.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, watchOS 7.0, *)
 internal extension ViewHosting {
     #if os(macOS)
     static func lookup<V>(_ view: V.Type) throws -> V.NSViewType
@@ -253,7 +253,7 @@ internal extension ViewHosting {
             else { throw InspectionError.viewNotFound(parent: name) }
             return vc
     }
-    #elseif os(iOS) || os(tvOS)
+    #elseif os(iOS) || os(tvOS) || os(visionOS)
     static func lookup<V>(_ view: V.Type) throws -> V.UIViewType
         where V: UIViewRepresentable {
             let name = Inspector.typeName(type: view)
@@ -300,7 +300,7 @@ internal protocol ArrayConvertible {
     func allValues() -> [Any]
 }
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 7.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, watchOS 7.0, *)
 extension Dictionary: ArrayConvertible {
     func allValues() -> [Any] { Array(values) as [Any] }
 }
@@ -337,8 +337,8 @@ private extension NSViewController {
         return presented + children
     }
 }
-#elseif os(iOS) || os(tvOS)
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+#elseif os(iOS) || os(tvOS) || os(visionOS)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 private extension UIView {
     func descendant(nameTraits: [String]) -> UIView? {
         let name = Inspector.typeName(value: self)
@@ -351,7 +351,7 @@ private extension UIView {
     }
 }
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 private extension UIViewController {
     func descendant(nameTraits: [String]) -> UIViewController? {
         let name = Inspector.typeName(value: self)

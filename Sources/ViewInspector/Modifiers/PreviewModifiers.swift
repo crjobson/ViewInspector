@@ -2,7 +2,7 @@ import SwiftUI
 
 // MARK: - ViewColorTests
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 public extension InspectableView {
     
     func foregroundColor() throws -> Color? {
@@ -34,7 +34,7 @@ public extension InspectableView {
         return try environment(keyPath, call: "accentColor")
     }
 
-    @available(iOS 15.0, macOS 12.0, tvOS 15.0, watchOS 8.0, *)
+    @available(iOS 15.0, visionOS 1.0, macOS 12.0, tvOS 15.0, watchOS 8.0, *)
     func tint() throws -> Color? {
         let reference = EmptyView().tint(nil)
         let keyPath = try Inspector.environmentKeyPath(Optional<Color>.self, reference)
@@ -64,7 +64,7 @@ public extension InspectableView {
             path: "modifier|value", type: Optional<ColorScheme>.self, call: "preferredColorScheme")
     }
 
-    @available(iOS 15.0, macOS 12.0, tvOS 15.0, watchOS 8.0, *)
+    @available(iOS 15.0, visionOS 1.0, macOS 12.0, tvOS 15.0, watchOS 8.0, *)
     func foregroundStyleShapeStyle<S>(_ style: S.Type) throws -> S where S: ShapeStyle {
         let typeName = Inspector.typeName(type: S.self)
         return try modifierAttribute(
@@ -76,7 +76,7 @@ public extension InspectableView {
 
 // MARK: - ViewPreview
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 public extension InspectableView {
     
     func previewDevice() throws -> PreviewDevice {

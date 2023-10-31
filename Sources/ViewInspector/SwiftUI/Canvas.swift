@@ -1,6 +1,6 @@
 import SwiftUI
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 public extension ViewType {
     
     struct Canvas: KnownViewType {
@@ -10,7 +10,7 @@ public extension ViewType {
 
 // MARK: - Extraction from SingleViewContent parent
 
-@available(iOS 15.0, macOS 12.0, tvOS 15.0, watchOS 8.0, *)
+@available(iOS 15.0, visionOS 1.0, macOS 12.0, tvOS 15.0, watchOS 8.0, *)
 public extension InspectableView where View: SingleViewContent {
     
     func canvas() throws -> InspectableView<ViewType.Canvas> {
@@ -20,7 +20,7 @@ public extension InspectableView where View: SingleViewContent {
 
 // MARK: - Extraction from MultipleViewContent parent
 
-@available(iOS 15.0, macOS 12.0, tvOS 15.0, watchOS 8.0, *)
+@available(iOS 15.0, visionOS 1.0, macOS 12.0, tvOS 15.0, watchOS 8.0, *)
 public extension InspectableView where View: MultipleViewContent {
     
     func canvas(_ index: Int) throws -> InspectableView<ViewType.Canvas> {
@@ -30,7 +30,7 @@ public extension InspectableView where View: MultipleViewContent {
 
 // MARK: - Non Standard Children
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 extension ViewType.Canvas: SupplementaryChildren {
     static func supplementaryChildren(_ parent: UnwrappedView) throws -> LazyGroup<SupplementaryView> {
         guard #available(iOS 15.0, macOS 12.0, tvOS 15.0, watchOS 8.0, *)
@@ -47,7 +47,7 @@ extension ViewType.Canvas: SupplementaryChildren {
 
 // MARK: - Custom Attributes
 
-@available(iOS 15.0, macOS 12.0, tvOS 15.0, watchOS 8.0, *)
+@available(iOS 15.0, visionOS 1.0, macOS 12.0, tvOS 15.0, watchOS 8.0, *)
 public extension InspectableView where View == ViewType.Canvas {
     
     func symbolsView() throws -> InspectableView<ViewType.ClassifiedView> {
@@ -95,7 +95,7 @@ public extension InspectableView where View == ViewType.Canvas {
     }
 }
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 private extension ViewType.Canvas {
     struct RasterizationOptions8: OptionSet {
         let rawValue: UInt8

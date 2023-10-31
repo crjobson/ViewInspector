@@ -1,6 +1,6 @@
 import SwiftUI
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 public protocol BasePopupPresenter {
     func buildPopup() throws -> Any
     func dismissPopup()
@@ -11,7 +11,7 @@ public protocol BasePopupPresenter {
     var isSheetPresenter: Bool { get }
 }
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 public protocol PopupPresenter: BasePopupPresenter {
     associatedtype Popup
     var isPresented: Binding<Bool> { get }
@@ -19,7 +19,7 @@ public protocol PopupPresenter: BasePopupPresenter {
     var onDismiss: (() -> Void)? { get }
 }
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 public protocol ItemPopupPresenter: BasePopupPresenter {
     associatedtype Popup
     associatedtype Item: Identifiable
@@ -30,7 +30,7 @@ public protocol ItemPopupPresenter: BasePopupPresenter {
 
 // MARK: - Extensions
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 extension BasePopupPresenter {
     func subject<T>(_ type: T.Type) -> String {
         if isPopoverPresenter { return "Popover" }
@@ -39,7 +39,7 @@ extension BasePopupPresenter {
     }
 }
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 public extension PopupPresenter {
     func buildPopup() throws -> Any {
         guard isPresented.wrappedValue else {
@@ -54,7 +54,7 @@ public extension PopupPresenter {
     }
 }
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 public extension ItemPopupPresenter {
     func buildPopup() throws -> Any {
         guard let value = item.wrappedValue else {
@@ -71,25 +71,25 @@ public extension ItemPopupPresenter {
 
 // MARK: - Alert
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 public extension PopupPresenter where Popup == Alert {
     var isAlertPresenter: Bool { true }
 }
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 public extension ItemPopupPresenter where Popup == Alert {
     var isAlertPresenter: Bool { true }
 }
 
 // MARK: - ActionSheet
 
-@available(iOS 13.0, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, tvOS 13.0, *)
 @available(macOS, unavailable)
 public extension PopupPresenter where Popup == ActionSheet {
     var isActionSheetPresenter: Bool { true }
 }
 
-@available(iOS 13.0, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, tvOS 13.0, *)
 @available(macOS, unavailable)
 public extension ItemPopupPresenter where Popup == ActionSheet {
     var isActionSheetPresenter: Bool { true }
@@ -97,7 +97,7 @@ public extension ItemPopupPresenter where Popup == ActionSheet {
 
 // MARK: - Popover, Sheet & FullScreenCover
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 public extension ViewModifier where Self: BasePopupPresenter {
     func content() throws -> ViewInspector.Content {
         let view = body(content: _ViewModifier_Content())
@@ -105,7 +105,7 @@ public extension ViewModifier where Self: BasePopupPresenter {
     }
 }
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 public extension ViewModifier where Self: PopupPresenter {
     var isPopoverPresenter: Bool {
         return (try? content().standardPopoverModifier()) != nil
@@ -115,7 +115,7 @@ public extension ViewModifier where Self: PopupPresenter {
     }
 }
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 public extension ViewModifier where Self: ItemPopupPresenter {
     var isPopoverPresenter: Bool {
         return (try? content().standardPopoverModifier()) != nil
@@ -127,7 +127,7 @@ public extension ViewModifier where Self: ItemPopupPresenter {
 
 // MARK: - Default
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 public extension BasePopupPresenter {
     var isAlertPresenter: Bool { false }
     var isActionSheetPresenter: Bool { false }
@@ -137,7 +137,7 @@ public extension BasePopupPresenter {
 
 // MARK: - PopupContainer
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 internal extension ViewType {
     struct PopupContainer<Popup: KnownViewType>: CustomViewIdentityMapping {
         let popup: Any
@@ -146,12 +146,12 @@ internal extension ViewType {
     }
 }
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 internal extension ViewType {
     static var popupContainerTypePrefix = "ViewInspector.ViewType.PopupContainer"
 }
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 internal extension ViewType.PopupContainer {
     static var typePrefix: String {
         return ViewType.popupContainerTypePrefix +
@@ -159,7 +159,7 @@ internal extension ViewType.PopupContainer {
     }
 }
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 internal extension Content {
     func popup<Popup: KnownViewType>(
         parent: UnwrappedView, index: Int?,

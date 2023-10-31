@@ -40,7 +40,7 @@ final class NavigationBarModifiersTests: XCTestCase {
     #endif
 }
 
-#if os(iOS) || os(tvOS)
+#if os(iOS) || os(tvOS) || os(visionOS)
 @available(iOS 13.0, tvOS 13.0, *)
 final class NavigationBarItemsTests: XCTestCase {
     
@@ -181,7 +181,7 @@ private struct TestView: View {
 @available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
 final class StatusBarConfigurationTests: XCTestCase {
     
-    #if os(iOS)
+    #if os(iOS) || os(visionOS)
     func testStatusBarHidden() throws {
         let sut1 = try EmptyView().statusBar(hidden: false).inspect()
         let sut2 = try EmptyView().statusBar(hidden: true).inspect()

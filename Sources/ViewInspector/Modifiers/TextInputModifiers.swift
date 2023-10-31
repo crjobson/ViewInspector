@@ -2,7 +2,7 @@ import SwiftUI
 
 // MARK: - Adjusting Text in a View
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
 public extension InspectableView {
     
     #if (os(iOS) || os(tvOS)) && !targetEnvironment(macCatalyst)
@@ -138,8 +138,8 @@ public extension InspectableView {
     }
 }
 
-#if (os(iOS) || os(tvOS)) && !targetEnvironment(macCatalyst)
-@available(iOS 15.0, tvOS 15.0, watchOS 8.0, *)
+#if (os(iOS) || os(tvOS) || os(visionOS)) && !targetEnvironment(macCatalyst)
+@available(iOS 15.0, visionOS 1.0, tvOS 15.0, watchOS 8.0, *)
 extension TextInputAutocapitalization {
     enum Behavior: String {
         case never, words, sentences, characters

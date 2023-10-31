@@ -2,7 +2,7 @@ import SwiftUI
 
 // MARK: - ViewEvents
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 public extension InspectableView {
     
     func callOnAppear() throws {
@@ -38,7 +38,7 @@ public extension InspectableView {
     }
 }
 
-@available(iOS 15, macOS 12, tvOS 15, watchOS 8, *)
+@available(iOS 15, visionOS 1.0, macOS 12, tvOS 15, watchOS 8, *)
 public extension InspectableView {
 
     func callOnSubmit(of triggers: SubmitTriggers = .text) throws {

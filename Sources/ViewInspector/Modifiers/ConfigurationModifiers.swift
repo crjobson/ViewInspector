@@ -2,11 +2,11 @@ import SwiftUI
 
 // MARK: - ViewControlAttributesTests
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 public extension InspectableView {
     
     func labelsHidden() -> Bool {
-        if #available(iOS 16.0, macOS 13.0, tvOS 16.0, watchOS 9.0, *) {
+        if #available(iOS 16.0, visionOS 1.0, macOS 13.0, tvOS 16.0, watchOS 9.0, *) {
             return (try? modifierAttribute(
                 modifierName: "LabelsHiddenModifier", transitive: true,
                 path: "modifier", type: Any.self, call: "labelsHidden")) != nil

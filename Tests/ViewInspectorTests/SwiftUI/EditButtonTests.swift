@@ -2,7 +2,7 @@ import XCTest
 import SwiftUI
 @testable import ViewInspector
 
-#if os(iOS)
+#if os(iOS) || os(visionOS)
 
 @available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
 final class EditButtonTests: XCTestCase {

@@ -1,7 +1,7 @@
 import SwiftUI
 import XCTest
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 public struct InspectableView<View> where View: BaseViewType {
     
     internal let content: Content
@@ -70,7 +70,7 @@ public struct InspectableView<View> where View: BaseViewType {
     }
 }
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 extension UnwrappedView {
     func implicitCustomViewChild(index: Int, call: String) throws
     -> (content: Content, parent: InspectableView<ViewType.View<ViewType.Stub>>)? {
@@ -86,7 +86,7 @@ extension UnwrappedView {
     }
 }
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 internal protocol UnwrappedView {
     var content: Content { get }
     var parentView: UnwrappedView? { get }
@@ -97,12 +97,12 @@ internal protocol UnwrappedView {
     var isUnwrappedSupplementaryChild: Bool { get set }
 }
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 extension InspectableView: UnwrappedView {
     var isTransitive: Bool { View.isTransitive }
 }
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 internal extension UnwrappedView {
     func asInspectableView() throws -> InspectableView<ViewType.ClassifiedView> {
         return try .init(content, parent: parentView, call: inspectionCall, index: inspectionIndex)
@@ -113,14 +113,14 @@ internal extension UnwrappedView {
     }
 }
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 internal extension InspectableView {
     func asInspectableView<T>(ofType type: T.Type) throws -> InspectableView<T> where T: BaseViewType {
         return try .init(content, parent: parentView, call: inspectionCall, index: inspectionIndex)
     }
 }
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 public extension InspectableView {
     /**
       A function for accessing the parent view for introspection
@@ -158,14 +158,14 @@ public extension InspectableView {
     }
 }
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 internal extension InspectableView where View: SingleViewContent {
     func child() throws -> Content {
         return try View.child(content)
     }
 }
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 internal extension InspectableView where View: MultipleViewContent {
     
     func child(at index: Int, isTupleExtraction: Bool = false) throws -> Content {
@@ -190,7 +190,7 @@ internal extension InspectableView where View: MultipleViewContent {
 
 // MARK: - Inspection of a Custom View
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 public extension View {
     
     func inspect(function: String = #function) throws -> InspectableView<ViewType.ClassifiedView> {
@@ -213,7 +213,7 @@ public extension View {
 
 // MARK: - Modifiers
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 public extension ViewModifier {
     
     func inspect(function: String = #function) throws -> InspectableView<ViewType.ViewModifier<Self>> {
@@ -232,7 +232,7 @@ public extension ViewModifier {
     }
 }
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 internal extension InspectableView {
 
     func modifierAttribute<Type>(
@@ -275,7 +275,7 @@ internal extension InspectableView {
     }
 }
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 internal extension Content {
     typealias ModifierLookupClosure = (ModifierNameProvider) -> Bool
 
@@ -325,19 +325,19 @@ internal extension Content {
     }
 }
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 internal protocol ModifierNameProvider {
     var modifierType: String { get }
     func modifierType(prefixOnly: Bool) -> String
     var customModifier: Any? { get }
 }
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 extension ModifierNameProvider {
     var modifierType: String { modifierType(prefixOnly: false) }
 }
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 extension ModifiedContent: ModifierNameProvider {
     
     func modifierType(prefixOnly: Bool) -> String {
@@ -354,7 +354,7 @@ extension ModifiedContent: ModifierNameProvider {
 
 // MARK: - isResponsive check for controls
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 public extension InspectableView {
     
     /**

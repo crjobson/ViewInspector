@@ -2,7 +2,7 @@ import SwiftUI
 
 // MARK: - InteractionEvents
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 public extension InspectableView {
     
     #if os(macOS)
@@ -79,7 +79,7 @@ public extension InspectableView {
     #endif
 }
 
-#if os(tvOS) || os(macOS)
+#if os(tvOS) || os(macOS) || os(visionOS)
 internal extension MoveCommandDirection {
     var selector: String {
         switch self {
@@ -93,7 +93,7 @@ internal extension MoveCommandDirection {
 }
 #endif
 
-#if os(tvOS) || os(macOS)
+#if os(tvOS) || os(macOS) || os(visionOS)
 internal extension InspectableView {
     func onCommandModifier<Type>(_ selector: String, path: String = "modifier|action|action",
                                  type: Type.Type, call: String) throws -> Type {
@@ -109,7 +109,7 @@ internal extension InspectableView {
 
 // MARK: - ViewHover
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 public extension InspectableView {
     
     /* Not supported
@@ -123,7 +123,7 @@ public extension InspectableView {
     #endif
     */
     
-    #if !os(iOS)
+    #if !os(iOS) && !os(visionOS)
     func callOnFocusChange() throws {
         let callback = try modifierAttribute(
             modifierName: "_FocusableModifier", path: "modifier|onFocusChange",

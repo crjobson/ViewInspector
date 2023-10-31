@@ -2,7 +2,7 @@ import SwiftUI
 
 // MARK: - ViewGraphicalEffects
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 public extension InspectableView {
     
     func blur() throws -> (radius: CGFloat, isOpaque: Bool) {
@@ -100,7 +100,7 @@ public extension InspectableView {
 
 // MARK: - ViewMasking
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 public extension InspectableView {
     
     func clipShape<S>(_ shape: S.Type) throws -> S where S: Shape {
@@ -130,7 +130,7 @@ public extension InspectableView {
     }
 }
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 internal extension Content {
     func mask(parent: UnwrappedView, index: Int?) throws -> InspectableView<ViewType.ClassifiedView> {
         let rootView = try modifierAttribute(
@@ -146,7 +146,7 @@ internal extension Content {
 
 // MARK: - ViewHiding
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 public extension InspectableView {
     
     func isHidden() -> Bool {
@@ -172,7 +172,7 @@ public extension InspectableView {
     }
 }
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 private extension UnwrappedView {
     func isControlLabelDescendant() -> Bool {
         guard let parent = parentView, let grandParent = parent.parentView
@@ -193,7 +193,7 @@ private extension UnwrappedView {
     }
 }
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 internal extension ModifierNameProvider {
     func isDisabledEnvironmentKeyTransformModifier() -> Bool {
         let reference = EmptyView().disabled(true)

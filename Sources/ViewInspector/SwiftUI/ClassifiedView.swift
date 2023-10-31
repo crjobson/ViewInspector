@@ -1,6 +1,6 @@
 import SwiftUI
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 public extension ViewType {
     
     struct ClassifiedView: KnownViewType {
@@ -15,7 +15,7 @@ public extension ViewType {
 
 // MARK: - Content Extraction
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 extension ViewType.ClassifiedView: SingleViewContent {
     
     public static func child(_ content: Content) throws -> Content {
@@ -23,7 +23,7 @@ extension ViewType.ClassifiedView: SingleViewContent {
     }
 }
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 extension ViewType.ParentView: SingleViewContent {
     
     public static func child(_ content: Content) throws -> Content {
@@ -31,7 +31,7 @@ extension ViewType.ParentView: SingleViewContent {
     }
 }
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 extension ViewType.ClassifiedView: MultipleViewContent {
     
     public static func children(_ content: Content) throws -> LazyGroup<Content> {

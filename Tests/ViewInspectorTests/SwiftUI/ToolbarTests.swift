@@ -8,7 +8,7 @@ final class ToolbarTests: XCTestCase {
     func testToolbarItemPlacementEquatable() throws {
         guard #available(iOS 14.0, macOS 11.0, tvOS 14.0, watchOS 7.0, *)
         else { throw XCTSkip() }
-        #if os(iOS)
+        #if os(iOS) || os(visionOS)
         let values: [ToolbarItemPlacement] = [
             .automatic, .principal, .bottomBar, .navigation,
             .navigationBarLeading, .navigationBarTrailing,

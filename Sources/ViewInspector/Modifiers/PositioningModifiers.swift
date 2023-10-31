@@ -2,7 +2,7 @@ import SwiftUI
 
 // MARK: - ViewPositioning
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 public extension InspectableView {
     
     func position() throws -> CGPoint {
@@ -32,7 +32,7 @@ public extension InspectableView {
 
 // MARK: - ViewLayering
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 public extension InspectableView {
     
     func zIndex() throws -> Double {

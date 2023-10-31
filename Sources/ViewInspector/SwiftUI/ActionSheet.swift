@@ -1,6 +1,6 @@
 import SwiftUI
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 public extension ViewType {
     
     struct ActionSheet: KnownViewType {
@@ -14,7 +14,7 @@ public extension ViewType {
 
 // MARK: - Extraction
 
-@available(iOS 13.0, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, tvOS 13.0, *)
 @available(macOS, unavailable)
 public extension InspectableView {
 
@@ -23,7 +23,7 @@ public extension InspectableView {
     }
 }
 
-@available(iOS 13.0, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, tvOS 13.0, *)
 @available(macOS, unavailable)
 internal extension Content {
     
@@ -60,7 +60,7 @@ internal extension Content {
 
 // MARK: - Custom Attributes
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 public extension InspectableView where View == ViewType.ActionSheet {
 
     func title() throws -> InspectableView<ViewType.Text> {
@@ -91,7 +91,7 @@ public extension InspectableView where View == ViewType.ActionSheet {
 
 // MARK: - Non Standard Children
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
+@available(iOS 13.0, visionOS 1.0, macOS 10.15, tvOS 13.0, *)
 extension ViewType.ActionSheet: SupplementaryChildren {
     static func supplementaryChildren(_ parent: UnwrappedView) throws -> LazyGroup<SupplementaryView> {
         let buttons = try Inspector.attribute(
