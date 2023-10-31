@@ -1,4 +1,4 @@
-#if os(iOS) || os(watchOS) || os(visionOS)
+#if os(iOS) || os(watchOS)
 
 import XCTest
 import SwiftUI

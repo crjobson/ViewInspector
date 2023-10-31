@@ -134,7 +134,17 @@ private extension ViewHosting {
     }
     #elseif os(iOS) || os(tvOS) || os(visionOS)
     static func makeWindow() -> UIWindow {
-        let window = UIWindow(frame: UIScreen.main.bounds)
+        var window: UIWindow
+        #if os(iOS) || os(tvOS)
+            window = UIWindow(frame: UIScreen.main.bounds)
+        #else
+            window = UIWindow(frame: CGRect(
+                x: 0,
+                y: 0,
+                width: 1280,
+                height: 1280
+            ))
+        #endif
         window.rootViewController = UIViewController()
         window.rootViewController?.view.translatesAutoresizingMaskIntoConstraints = false
         window.makeKeyAndVisible()
